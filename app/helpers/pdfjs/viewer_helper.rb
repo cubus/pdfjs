@@ -24,11 +24,10 @@ module Pdfjs
 
     def pdf_viewer(filename, options = {})
       toolbar = options.fetch(:toolbar, :default)
-      hidden_class = options.fetch(:hidden_class, 'collapse')
+      hidden_class = options.fetch(:hidden_class, 'hidden')
 
-      toolbar = toolbar.to_s.upcase.safe_constantize ||
+      toolbar = "Pdfjs::ViewerHelper::#{toolbar.upcase}".safe_constantize ||
         DEFAULT unless toolbar.is_a?(Array)
-
       show_item = -> (item) { toolbar.member?(item) ? '' : hidden_class }
 
       ActionController::Base.new.render_to_string 'pdfjs/toolbar', locals: {

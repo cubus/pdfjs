@@ -1,5 +1,4 @@
 <div id="outerContainer" class="loadingInProgress">
-
   <div id="sidebarContainer">
     <div id="toolbarSidebar">
       <div class="splitToolbarButton toggled">
@@ -125,7 +124,7 @@
             </div>
           </div>
           <div id="toolbarViewerRight">
-            <button id="presentationMode" class="<%= show_item[:full_screen] %> toolbarButton presentationMode hiddenLargeView" title="Switch to Presentation Mode" tabindex="31" data-l10n-id="presentation_mode">
+            <button id="presentationMode" class="<%= show_item[:fullscreen] %> toolbarButton presentationMode hiddenLargeView" title="Switch to Presentation Mode" tabindex="31" data-l10n-id="presentation_mode">
               <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
             </button>
 
@@ -145,15 +144,17 @@
               <span data-l10n-id="bookmark_label">Current View</span>
             </a>
 
-            <div class="verticalToolbarSeparator hiddenSmallView"></div>
+            <div class="<%= show_item[:tools] %>">
+              <div class="verticalToolbarSeparator hiddenSmallView"></div>
 
-            <button id="secondaryToolbarToggle" class="<%= show_item[:tools] %> toolbarButton" title="Tools" tabindex="36" data-l10n-id="tools">
-              <span data-l10n-id="tools_label">Tools</span>
-            </button>
+              <button id="secondaryToolbarToggle" class="toolbarButton" title="Tools" tabindex="36" data-l10n-id="tools">
+                <span data-l10n-id="tools_label">Tools</span>
+              </button>
+            </div>
           </div>
           <div class="outerCenter">
             <div class="innerCenter" id="toolbarViewerMiddle">
-              <div class="splitToolbarButton">
+              <div class="splitToolbarButton <%= show_item[:zoom_buttons] %>">
                 <button id="zoomOut" class="toolbarButton zoomOut" title="Zoom Out" tabindex="21" data-l10n-id="zoom_out">
                   <span data-l10n-id="zoom_out_label">Zoom Out</span>
                 </button>
@@ -162,7 +163,7 @@
                   <span data-l10n-id="zoom_in_label">Zoom In</span>
                  </button>
               </div>
-              <span id="scaleSelectContainer" class="dropdownToolbarButton">
+              <span id="scaleSelectContainer" class="dropdownToolbarButton <%= show_item[:zoom_select] %>">
                  <select id="scaleSelect" title="Zoom" tabindex="23" data-l10n-id="zoom">
                   <option id="pageAutoOption" title="" value="auto" selected="selected" data-l10n-id="page_scale_auto">Automatic Zoom</option>
                   <option id="pageActualOption" title="" value="page-actual" data-l10n-id="page_scale_actual">Actual Size</option>
